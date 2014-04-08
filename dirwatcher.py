@@ -7,6 +7,8 @@ import sys
 
 from queue import Queue
 
+from clint.textui import colored, puts
+
 MAIN_TASK_QUEUE = Queue()
 
 
@@ -40,5 +42,5 @@ if __name__ == '__main__':
     for d in dirs:
         threading.Thread(target=watch, args=(d,), daemon=True).start()
     threading.Thread(target=print_q, args=(), daemon=True).start()
-    print("Press q to quick watching \n", file=sys.stdout)
+    puts(colored.yellow('Press') + ' ' + colored.yellow('q', bold=True) + ' ' + colored.yellow('to quit.'))
     if input() == 'q': pass
